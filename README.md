@@ -3,9 +3,9 @@
 - **Contributors: Yuliya Buiko, Tim Rodrigues, Mackenzie Wicker, Roman Larionov**
 - **App Name: Study-Body**
 - **Description: Server-side app that contains sets of APIs to fetch, insert, delete and update data. The APIs contain routes for deks, cards that support full crud data manipulation**
-- **GitHub Url:**
-- **Deployed WebSite:**
-- **Trello Board:**
+- **GitHub Url: https://github.com/timorodr/Unit3_PROJECT_BE.git**
+- **Deployed WebSite: https://unit3-project-be.onrender.com/**
+- **Trello Board: https://trello.com/b/RYq8mpis/flash-cards-project**
 
 ## List of Dependencies
 

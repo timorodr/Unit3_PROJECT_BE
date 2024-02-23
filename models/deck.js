@@ -2,7 +2,7 @@ const mongoose = require('./connection') // configuring to our connection mongoo
 
 const DeckSchema = new mongoose.Schema({
     name: String,
-    isPrivate: true,
+    isPrivate: Boolean,
     username: String,
     description: String
 },

@@ -3,7 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
-// const PeopleRouter = require('./controllers/people')
+const DeckRouter = require('./controllers/deck')
 
 
 const app = express()
@@ -16,7 +16,7 @@ app.use(express.json()) // this middleware allows us to send JSON request with o
 
 //routes
 // app.use('/user', UserRouter)
-// app.use('/deck', DeckRouter)
+app.use('/deck', DeckRouter)
 // app.use('/card', CardRouter)
 
 app.get('/', (req, res) => {

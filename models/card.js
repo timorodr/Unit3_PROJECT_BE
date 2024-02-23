@@ -1,14 +1,15 @@
-const mongoose = require('./connection') // configuring to our connection mongoose 
+const mongoose = require("./connection"); // configuring to our connection mongoose
 
-const CardSchema = new mongoose.Schema({
-    deckId: Schema.Types.ObjectId,
+const CardSchema = new mongoose.Schema(
+  {
     username: String,
     question: String,
-    answers: String
-},
-{ timestamps: true }
-)
+    answer: String,
+    deckId: mongoose.Types.ObjectId,
+  },
+  { timestamps: true }
+);
 
-const Card = mongoose.model("Card", CardSchema)
+const Card = mongoose.model("Card", CardSchema);
 
-module.exports = Card
+module.exports = Card;

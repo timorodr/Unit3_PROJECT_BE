@@ -21,7 +21,7 @@ router.post("/:deckId", async (req, res) => {
     let deck = await Deck.findById(deckId);
     deck.cards.push(card._id);
     await deck.save();
-    res.json(deck);
+    res.json(card);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -40,6 +40,17 @@ router.put("/:deckId/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     res.json(await Card.findByIdAndDelete(req.params.id));
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.get("/:deckId/:id", async (req, res) => {
+  try {
+    const deckid = req.params.deckId;
+    const id = req.params.id;
+    console.log(id);
+    res.json(await Card.findById(req.params.id));
   } catch (err) {
     res.status(400).json(err);
   }

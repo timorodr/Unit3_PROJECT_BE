@@ -1,6 +1,6 @@
 const express = require("express");
-const Card = require("../models/card");
-const { param } = require("./deck");
+const Card = require("../models/cards");
+const Deck = require("../models/deck");
 
 const router = express.Router();
 
@@ -15,9 +15,13 @@ router.get("/:deckId", async (req, res) => {
 
 router.post("/:deckId", async (req, res) => {
   try {
-    const deckId = req.params.deckId;
+    let deckId = req.params.deckId;
     req.body.deckId = deckId;
-    res.json(await Card.create(req.body));
+    let card = await Card.create(req.body);
+    let deck = await Deck.findById(deckId);
+    deck.cards.push(card._id);
+    await deck.save();
+    res.json(deck);
   } catch (err) {
     res.status(400).json(err);
   }

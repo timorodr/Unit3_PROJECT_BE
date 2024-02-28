@@ -1,5 +1,6 @@
 const express = require("express");
 const Deck = require("../models/deck");
+const Card = require("../models/cards")
 
 const router = express.Router();
 
@@ -21,7 +22,9 @@ router.post("/", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    res.json(await Deck.findByIdAndDelete(req.params.id));
+    const id = req.params.id
+    await Card.deleteMany({deckId: id})
+    res.json(await Deck.findByIdAndDelete(id));
   } catch (err) {
     res.status(400).json(err);
   }

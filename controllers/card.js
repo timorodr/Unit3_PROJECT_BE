@@ -39,17 +39,13 @@ router.put("/:deckId/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    const id = req.params.id
-    const card = await Card.findById(id)
-    console.log(card)
-    const deckId = card.deckId
-    console.log("THIS DECKID", typeof deckId)
-    const deck = await Deck.findOne({deckId: deckId});
-    console.log("ARE WE GETTING A DECK", deck)
-    const cardIndex = deck.cards.indexOf(id)
-    console.log(cardIndex)
-    deck.cards.splice(cardIndex, 1)
-    res.json(await Card.findByIdAndDelete(req.params.id));
+    const id = req.params.id;
+    const card = await Card.findById(id);
+    const deck = await Deck.findById(card.deckId);
+    const cardIndex = deck.cards.indexOf(id);
+    deck.cards.splice(cardIndex, 1);
+    await deck.save();
+    res.json(await Card.findByIdAndDelete(id));
   } catch (err) {
     res.status(400).json(err);
   }
